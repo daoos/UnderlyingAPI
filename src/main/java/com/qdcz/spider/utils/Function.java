@@ -35,6 +35,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +54,24 @@ import com.qdcz.spider.http.MedicalContent;
 import com.qdcz.spider.http.UserAgent;
 
 public class Function {
+	/**
+	 * 运行定时任务
+	 * @param service
+	 * @param time
+	 * @param call
+	 * @return
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 * @throws TimeoutException
+	 */
+	public static Object runTimerTask(ExecutorService service,long time,Callable<Object> call) throws InterruptedException, ExecutionException, TimeoutException{
+		FutureTask<Object> future = new FutureTask<Object>(call);  
+    	service.submit(future);
+    	return future.get(time, TimeUnit.MILLISECONDS);
+	}
+	
+	
+	
 	/**
 	 * 多线程的使用方法
 	 * 
