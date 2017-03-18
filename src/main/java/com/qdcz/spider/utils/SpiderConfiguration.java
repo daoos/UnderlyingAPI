@@ -13,8 +13,10 @@ public class SpiderConfiguration {
 	
 	public static void loadAllConfiguration(){
 		if(config==null){
-			String configurePath="/usr/hadoop/spiderV3/conf/spider.conf";
-			String configContent = HDFSOperations.readConfigFile(configurePath);
+			String configurePath="conf\\spider_new.conf";
+			String configContent =Function.readFileOneTime(configurePath);
+//			String configurePath="/usr/hadoop/spiderV3/conf/spider.conf";
+//			String configContent = HDFSOperations.readConfigFile(configurePath);
 			String[] confArr = configContent.split("\n");
 			config = new HashMap<String,String>();
 			for(String line:confArr){
@@ -22,7 +24,7 @@ public class SpiderConfiguration {
 					continue;
 				String[] arr = line.split("=");
 				if(arr.length==2){
-					config.put(arr[0], arr[1]);
+					config.put(arr[0].trim(), arr[1].trim());
 				}
 			}
 		}

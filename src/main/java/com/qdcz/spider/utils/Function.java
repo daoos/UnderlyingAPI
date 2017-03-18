@@ -1,8 +1,43 @@
 package com.qdcz.spider.utils;
 
-import com.qdcz.spider.http.GZIPUtils;
-import com.qdcz.spider.http.MedicalContent;
-import com.qdcz.spider.http.UserAgent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -11,15 +46,9 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.*;
-import java.net.*;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.qdcz.spider.http.GZIPUtils;
+import com.qdcz.spider.http.MedicalContent;
+import com.qdcz.spider.http.UserAgent;
 
 public class Function {
 	/**
@@ -49,7 +78,7 @@ public class Function {
 		}
 		execs.shutdownNow();
 		execs.shutdown();
-		System.out.println("搜索-----多线程结束-------线程数：-" + THREAD_NUM);
+		System.out.println("搜索-----多线程结束-------线程数：- " + THREAD_NUM);
 		return result;
 	}
 
@@ -288,7 +317,8 @@ public class Function {
 		return usedata;
 	}
 
-	private static void segementSentence(String text, Map<Object, Object> words) {
+	private static void segementSentence(String text,
+			Map<Object, Object> words) {
 		StringReader reader;
 		Analyzer analyzer;
 		TokenStream ts_standard;
@@ -448,8 +478,8 @@ public class Function {
 		int index = 0;
 		for (int i = 0; i < bytes.length; i++) {
 			for (int j = 7; j >= 0; j--) {
-				bitSet.set(index++, (bytes[i] & (1 << j)) >> j == 1 ? true
-						: false);
+				bitSet.set(index++,
+						(bytes[i] & (1 << j)) >> j == 1 ? true : false);
 			}
 		}
 		return bitSet;
@@ -529,8 +559,8 @@ public class Function {
 				throw new RuntimeException("java不支持此次字符集          " + charset);
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("错误字符" + charset + "     "
-					+ e.getMessage());
+			throw new RuntimeException(
+					"错误字符" + charset + "     " + e.getMessage());
 		}
 
 		return charset;
@@ -585,37 +615,37 @@ public class Function {
 					for (int i = 0; i < 4; i++) {
 						aChar = ori.charAt(x++);
 						switch (aChar) {
-						case '0':
-						case '1':
-						case '2':
-						case '3':
-						case '4':
-						case '5':
-						case '6':
-						case '7':
-						case '8':
-						case '9':
-							value = (value << 4) + aChar - '0';
-							break;
-						case 'a':
-						case 'b':
-						case 'c':
-						case 'd':
-						case 'e':
-						case 'f':
-							value = (value << 4) + 10 + aChar - 'a';
-							break;
-						case 'A':
-						case 'B':
-						case 'C':
-						case 'D':
-						case 'E':
-						case 'F':
-							value = (value << 4) + 10 + aChar - 'A';
-							break;
-						default:
-							throw new IllegalArgumentException(
-									"Malformed   \\uxxxx   encoding.");
+							case '0' :
+							case '1' :
+							case '2' :
+							case '3' :
+							case '4' :
+							case '5' :
+							case '6' :
+							case '7' :
+							case '8' :
+							case '9' :
+								value = (value << 4) + aChar - '0';
+								break;
+							case 'a' :
+							case 'b' :
+							case 'c' :
+							case 'd' :
+							case 'e' :
+							case 'f' :
+								value = (value << 4) + 10 + aChar - 'a';
+								break;
+							case 'A' :
+							case 'B' :
+							case 'C' :
+							case 'D' :
+							case 'E' :
+							case 'F' :
+								value = (value << 4) + 10 + aChar - 'A';
+								break;
+							default :
+								throw new IllegalArgumentException(
+										"Malformed   \\uxxxx   encoding.");
 						}
 					}
 					outBuffer.append((char) value);
@@ -639,18 +669,15 @@ public class Function {
 
 	/**
 	 * 
-	 * @Title: getOSType
-	 * @Description: 或得操作系统类型
-	 * @author qdcz
-	 * @throws
+	 * @Title: getOSType @Description: 或得操作系统类型 @author qdcz @throws
 	 */
 	public static String getOSType() {
 		String os = System.getProperties().getProperty("os.name");
 		if (os.contains("Windows")) {
 			String arch = System.getenv("PROCESSOR_ARCHITECTURE");
 			String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
-			if (arch.endsWith("64") || wow64Arch != null
-					&& wow64Arch.endsWith("64")) {
+			if (arch.endsWith("64")
+					|| wow64Arch != null && wow64Arch.endsWith("64")) {
 				return "WIN_64";
 			} else {
 				return "WIN_32";
