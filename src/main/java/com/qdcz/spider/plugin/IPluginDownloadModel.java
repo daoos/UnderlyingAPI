@@ -8,6 +8,5 @@ import com.qdcz.spider.http.Response;
  */
 public interface IPluginDownloadModel {
     boolean judge();
-
     void getResonpse(Response response);
 }
