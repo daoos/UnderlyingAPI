@@ -9,4 +9,5 @@ public interface IPluginDownloadModel {
     boolean judge();
 
     void getResonpse(DownloadResponse response);
+
 }
