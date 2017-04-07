@@ -1,6 +1,5 @@
 package com.qdcz.spider.plugin;
 
-import com.qdcz.spider.http.Response;
 
 /**
  * @author: YuanYingqiu
@@ -9,5 +8,5 @@ import com.qdcz.spider.http.Response;
 public interface IPluginDownloadModel {
     boolean judge();
 
-    void getResonpse(Response response);
+    void getResonpse(DownloadResponse response);
 }
