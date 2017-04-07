@@ -29,6 +29,7 @@ public class Configuration {
 		}
 	}
 	
+	
 	public static String getConf(String dir,String fileName){
 		String configurePath = SpiderProperties.getProperty(dir) + Configuration.getConfig(fileName);
 		String configContent = Function.readFileOneTime(configurePath);
