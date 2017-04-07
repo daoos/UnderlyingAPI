@@ -1,4 +1,4 @@
-package com.qdcz.spider.parse;
+package com.qdcz.spider.plugin;
 
 
 public interface PluginParseModel {

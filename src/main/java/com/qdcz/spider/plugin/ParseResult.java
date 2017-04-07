@@ -1,4 +1,4 @@
-package com.qdcz.spider.parse;
+package com.qdcz.spider.plugin;
 
 import java.util.Vector;
 import org.json.JSONObject;
