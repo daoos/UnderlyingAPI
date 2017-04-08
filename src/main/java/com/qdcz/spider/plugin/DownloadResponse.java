@@ -11,6 +11,12 @@ public class DownloadResponse {
     private boolean isSucceed;
     private byte[] htmlContent;
     private String charset;
+    private String searchWord;
+    private int page;//需要下载的页码
+    private int totalPage;//所有的页码
+    private boolean toSearch;//是否要去搜索
+        
+
 
     public String getUrl() {
         return url;
