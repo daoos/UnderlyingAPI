@@ -15,6 +15,7 @@ public class DownloadResponse {
     private int page;//需要下载的页码
     private int totalPage;//所有的页码
     private boolean toSearch;//是否要去搜索
+    private boolean toTurnPage;
 
 
 
@@ -97,5 +98,14 @@ public class DownloadResponse {
 
     public void setToSearch(boolean toSearch) {
         this.toSearch = toSearch;
+    }
+
+
+    public boolean isToTurnPage() {
+        return toTurnPage;
+    }
+
+    public void setToTurnPage(boolean toTurnPage) {
+        this.toTurnPage = toTurnPage;
     }
 }
