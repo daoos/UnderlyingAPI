@@ -1,6 +1,10 @@
 package com.qdcz.spider.utils;
 
-import com.qdcz.spider.http.*;
+import com.qdcz.spider.http.Http;
+import com.qdcz.spider.http.Https;
+import com.qdcz.spider.http.MedicalContent;
+import com.qdcz.spider.http.ProtocolStatus;
+import com.qdcz.spider.http.Response;
 
 public class DownloadFunction {
 

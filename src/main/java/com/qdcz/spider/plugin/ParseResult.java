@@ -1,6 +1,7 @@
 package com.qdcz.spider.plugin;
 
 import java.util.Vector;
+
 import org.json.JSONObject;
 
 public class ParseResult {

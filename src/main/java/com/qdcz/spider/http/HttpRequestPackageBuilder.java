@@ -1,10 +1,10 @@
 package com.qdcz.spider.http;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**

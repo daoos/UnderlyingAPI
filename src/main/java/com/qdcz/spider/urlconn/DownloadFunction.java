@@ -10,7 +10,6 @@ import java.net.Proxy;
 import java.net.URL;
 
 import com.qdcz.spider.http.GZIPUtils;
-import com.qdcz.spider.urlconn.Request.TYPE;
 
 public class DownloadFunction {
 	private Response downBYConn(Request request){

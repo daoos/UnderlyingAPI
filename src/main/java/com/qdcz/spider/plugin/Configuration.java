@@ -8,7 +8,6 @@ import com.qdcz.spider.utils.SpiderProperties;
 
 public class Configuration {
 	private static Map<String,String> config = null;
-	
 	static{
 		loadAllConfiguration();
 	}

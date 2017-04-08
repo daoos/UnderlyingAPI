@@ -1,14 +1,15 @@
 package com.qdcz.spider.dao;
+import java.util.Date;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
-import org.bson.Document;
-import org.bson.conversions.Bson;
-
-import java.util.Date;
 
 /**
  * @brief monogodb操作接口类
@@ -50,7 +51,6 @@ public final class AccountPersistentMap {
 		this.databaseName = databaseName;
 		this.collectionName = collectionName;
 	}
-	
 	
 	private void ReConnect(){
 		client = new MongoClient(host, port);

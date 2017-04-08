@@ -1,13 +1,19 @@
 package com.qdcz.spider.http;
 
-import com.qdcz.spider.proxy.MyProxyAuthenticator;
-import org.json.JSONException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.*;
+import java.net.Authenticator;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+
+import org.json.JSONException;
+
+import com.qdcz.spider.proxy.MyProxyAuthenticator;
 
 public class Https extends Thread {
 	

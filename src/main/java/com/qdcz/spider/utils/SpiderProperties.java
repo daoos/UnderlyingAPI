@@ -1,13 +1,13 @@
 package com.qdcz.spider.utils;
 
 
-import com.hpre.coordination.ServiceManager;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import com.hpre.coordination.ServiceManager;
 
 public final class SpiderProperties {
 	private static Properties props;

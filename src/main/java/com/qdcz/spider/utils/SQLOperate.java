@@ -1,9 +1,9 @@
 package com.qdcz.spider.utils;
 
-import com.qdcz.spider.dao.JDBC;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.qdcz.spider.dao.JDBC;
 
 public class SQLOperate {
 	//数据库连接参数
