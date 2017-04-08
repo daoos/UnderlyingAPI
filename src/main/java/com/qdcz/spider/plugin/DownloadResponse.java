@@ -15,7 +15,7 @@ public class DownloadResponse {
     private int page;//需要下载的页码
     private int totalPage;//所有的页码
     private boolean toSearch;//是否要去搜索
-        
+
 
 
     public String getUrl() {
@@ -64,5 +64,38 @@ public class DownloadResponse {
 
     public void setCharset(String charset) {
         this.charset = charset;
+    }
+
+
+    public String getSearchWord() {
+        return searchWord;
+    }
+
+    public void setSearchWord(String searchWord) {
+        this.searchWord = searchWord;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public boolean isToSearch() {
+        return toSearch;
+    }
+
+    public void setToSearch(boolean toSearch) {
+        this.toSearch = toSearch;
     }
 }
