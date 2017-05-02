@@ -25,4 +25,28 @@ public class PluginInfo {
 	public void addInstanceClass(String classPath){
 		this.instanceClassList.add(classPath);
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		PluginInfo that = (PluginInfo) o;
+
+		if (jarName != null ? !jarName.equals(that.jarName) : that.jarName != null) return false;
+		if (url != null ? !url.equals(that.url) : that.url != null) return false;
+		if (helpClassList != null ? !helpClassList.equals(that.helpClassList) : that.helpClassList != null)
+			return false;
+		return instanceClassList != null ? instanceClassList.equals(that.instanceClassList) : that.instanceClassList == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = jarName != null ? jarName.hashCode() : 0;
+		result = 31 * result + (url != null ? url.hashCode() : 0);
+		result = 31 * result + (helpClassList != null ? helpClassList.hashCode() : 0);
+		result = 31 * result + (instanceClassList != null ? instanceClassList.hashCode() : 0);
+		return result;
+	}
 }

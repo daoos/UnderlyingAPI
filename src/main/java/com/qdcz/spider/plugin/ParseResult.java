@@ -8,11 +8,15 @@ public class ParseResult {
 	
 	public JSONObject dataJson;// 存储返回的结果串
 	public Vector<String> urls;//存储解析得到的新地址
+	public Vector<String> needRedirectUrls; //存储需要重定向的地址
 	public String currentUrl;//当前需要解析的文档对应的网址
 	public byte[] htmlContent;//文档内容
 	public boolean urlMatched;//用于judge()方法判断，传递过来的网址是否和本类解析的地址对应
 	public boolean isSucceed;//存储解析结果
 	public String charset;
+	public String nextPageUrl;
+	public int totalPage;
+	public String searchWord;
 	//数据库配置信息
 	public String dbHost;//mysql数据库服务器的主机地址
 	public String dbPort;//mysql数据库服务器的连接端口

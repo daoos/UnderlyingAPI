@@ -16,6 +16,7 @@ public class DownloadResponse {
     private int totalPage;//所有的页码
     private boolean toSearch;//是否要去搜索
     private boolean toTurnPage;
+    private boolean needRedirect;
 
 
 
@@ -107,5 +108,13 @@ public class DownloadResponse {
 
     public void setToTurnPage(boolean toTurnPage) {
         this.toTurnPage = toTurnPage;
+    }
+
+    public boolean isNeedRedirect() {
+        return needRedirect;
+    }
+
+    public void setNeedRedirect(boolean needRedirect) {
+        this.needRedirect = needRedirect;
     }
 }

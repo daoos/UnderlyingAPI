@@ -1,19 +1,6 @@
 package com.qdcz.spider.utils;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
@@ -45,6 +32,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apache.lucene.codecs.blocktree.FieldReader;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -52,6 +40,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import com.qdcz.spider.http.GZIPUtils;
 import com.qdcz.spider.http.MedicalContent;
 import com.qdcz.spider.http.UserAgent;
+import org.openqa.selenium.support.FindAll;
 
 public class Function {
 	/**
@@ -150,7 +139,6 @@ public class Function {
 	 * 需要cookie
 	 * 
 	 * @param urlstr
-	 * @param fs
 	 * @param cookie
 	 * @return
 	 * @throws Exception
@@ -195,7 +183,6 @@ public class Function {
 	 * 需要使用代理，同时带入key—�?�value�?
 	 * 
 	 * @param urlstr
-	 * @param fs
 	 * @param key_value
 	 * @return
 	 * @throws Exception
@@ -748,5 +735,48 @@ public class Function {
 			System.out.println(e);
 		}
 		return result;
+	}
+	public static List<String> readFile(String path){
+		File file = new File(path);
+		Reader fieldReader = null;
+		BufferedReader bufReader = null;
+		try {
+			List<String> allContent = new ArrayList<>();
+			fieldReader = new FileReader(file);
+			bufReader = new BufferedReader(fieldReader);
+			String line = "";
+			while ((line = bufReader.readLine())!=null){
+				if(line.isEmpty()){
+					continue;
+				}
+				allContent.add(line.trim());
+
+			}
+
+			return allContent;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+
+			if(bufReader!=null){
+				try {
+					bufReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if(fieldReader!=null){
+				try {
+					fieldReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+
+		return null;
+
 	}
 }

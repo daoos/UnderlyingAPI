@@ -3,24 +3,24 @@ package com.qdcz.spider.utils;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LoopQueue {
-	private List<String> list;
+public class LoopQueue<T> {
+	private List<T> list;
 	
 	public LoopQueue(){
-		this.list = new LinkedList<String>();
+		this.list = new LinkedList<T>();
 	}
 
-	public void add(String element){
+	public void add(T element){
 		this.list.add(element);
 	}
-	public synchronized String get(){
-		String element = list.get(0);
+	public synchronized T get(){
+		T element = list.get(0);
 		list.remove(0);
 		list.add(element);
 		return element;
 	}
 	public static void main(String[] args){
-		LoopQueue loopqueue = new LoopQueue();
+		LoopQueue<String> loopqueue = new LoopQueue<>();
 		loopqueue.add("111");
 		loopqueue.add("222");
 		loopqueue.add("333");

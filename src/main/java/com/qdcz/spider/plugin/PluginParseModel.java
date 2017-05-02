@@ -2,6 +2,7 @@ package com.qdcz.spider.plugin;
 
 
 public interface PluginParseModel {
-	public boolean judge();
-	public void getResult(ParseResult parseResult);
+    boolean judge();
+
+    void getResult(ParseResult parseResult);
 }

@@ -38,8 +38,6 @@ public class Request {
 	 * 设置代理，不具有用户名和密码
 	 * @param proxy_host
 	 * @param proxy_port
-	 * @param proxy_user
-	 * @param proxy_pass
 	 */
 	public void setProxy(String proxy_host,int proxy_port){
 		this.proxy_host = proxy_host;
