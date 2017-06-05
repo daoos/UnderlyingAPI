@@ -42,8 +42,7 @@ public class DownloadFunction {
 			}
 		}
 	}
-	
-	
+
 	
 	public String down_http_get_redirect(String url, MedicalContent mcontent) throws Exception {
 		int maxRedirect = 2;

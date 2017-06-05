@@ -23,6 +23,9 @@ public class Response {
 	private byte[] data;
 	
 	private Exception exception;
+
+	//有可能302，返回302之后访问的url
+	private String url;
 	
 	
 	public Map<String, List<String>> getHeader() {
@@ -67,5 +70,13 @@ public class Response {
 
 	public void setException(Exception exception) {
 		this.exception = exception;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

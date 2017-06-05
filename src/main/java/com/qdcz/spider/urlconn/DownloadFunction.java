@@ -53,10 +53,12 @@ public class DownloadFunction {
 			int resultCode=0;
 			resultCode = conn.getResponseCode();
 			response.setResult_code(resultCode);
-			
+
 			
 			//获取请求头
 			response.setHeader(conn.getHeaderFields());
+
+			response.setUrl(conn.getURL().toString());
 			
 			//获取数据
 			is = conn.getInputStream();
